@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokéDex</title>
+    <script src="./utility.js"></script>
+    <script src="./templates.js"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./fonts/font.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./img/icons/pokeball.svg">
+  </head>
+  <body onload="loadPokemon()">
+    <header>
+      <button onclick="showSearchbar()">
+        <img src="./img/icons/loupe.png" alt="" width="30">
+      </button>
+      <div class="searchbar special-d-none">
+        <input type="text" name="" placeholder="Search by name or number..." oninput="searchFunction()">
+        <button onclick="resetSearch()"></button>
+      </div>
+      <button class="sort" onclick="toggleSortOptions(event)">
+        <span>Lowest Number (First)</span>
+        <img src="./img/icons/left-arrow.png" width="20">
+      </button>
+      <div class="sort-options d-none">
+        <button value="numbers_ascending" onclick="sortAndSearch()">Lowest Number (First)</button>
+        <button value="numbers_descending" onclick="sortAndSearch()">Highest Number (First)</button>
+        <button value="names_ascending" onclick="sortAndSearch()">A - Z</button>
+        <button value="names_descending" onclick="sortAndSearch()">Z - A</button>
+      </div>
+    </header>
+    <div id="container"></div>
+    <div class="bg d-none" onclick="closeBg()">
+      <button class="previous-pokemon" onclick="loadFullscreenCard(currentPokemonId - 1)"></button>
+      <div class="fullscreen-card">
+        <div class="close-btn" onclick="closeBg()"></div>
+        <div class="main-card"></div>
+      </div>
+      <button class="next-pokemon" onclick="loadFullscreenCard(currentPokemonId + 1)"></button>
+    </div>
+  </body>
+</html>
